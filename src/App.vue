@@ -2,18 +2,19 @@
   <div>
     <AppHeader />
     <div class="w-full flex">
-      <DcHeros />
+      <!-- <DcHeros /> -->
+      <Calendar />
     </div>
   </div>
 </template>
 
 <script>
-import AppHeader from "./components/AppHeader.vue";
-import DcHeros from "./components/DcHeros.vue";
+import AppHeader from "./components/AppHeader";
+import Calendar from "./components/Calendar";
+
+// import DcHeros from "./components/DcHeros.vue";
 export default {
-  components: { AppHeader,DcHeros },
-  
-  
+  components: { AppHeader, Calendar },
 };
 </script>
 
