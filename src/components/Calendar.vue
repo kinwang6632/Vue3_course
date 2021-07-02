@@ -28,7 +28,7 @@
         style="width: 14.28%"
         v-for="num in daysInMonth()"
         :key="num"
-        :class="num === currentDate ? 'text-yellow-200':''"
+        :class="currenDateClass(num)"
       >
         {{ num }}
       </p>
@@ -72,6 +72,18 @@ export default {
       } else {
         this.currentMonth--;
       }
+    },
+    currenDateClass(num) {
+      const calendarFullDate = new Date(
+        this.currentYear,
+        this.currentMonth - 1,
+        num
+      ).toDateString();
+      const currentFullDate = new Date().toDateString();
+      const result =
+        calendarFullDate === currentFullDate ? "text-yellow-300" : "";
+      return result;
+      //return  == new Date()
     },
   },
   computed: {
