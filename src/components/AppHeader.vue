@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full">
     <nav
       class="
         w-full
@@ -11,7 +11,8 @@
         py-2
       "
     >
-      <a>Dc Heros</a>
+      <router-link class="mx-2" to="/dc-heros">DC Heros</router-link>
+      <router-link class="mx-2" to="/calendar">Calendar</router-link>      
     </nav>
   </div>
 </template>
