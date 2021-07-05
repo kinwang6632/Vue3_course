@@ -11,15 +11,26 @@
         py-2
       "
     >
-      <router-link class="mx-2" to="/dc-heros">DC Heros</router-link>
-      <router-link class="mx-2" to="/calendar">Calendar</router-link>      
+      <router-link v-for="item in list" :to="item.to" :key="item.to" class="mx-2">{{
+        item.title
+      }}</router-link>
     </nav>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      list: [
+        { title: "DC Heros", to: "/dc-heros" },
+        { title: "Calendar", to: "/calendar" },
+        { title: "Markdown", to: "/markdown" },
+      ],
+    };
+  },
+};
 </script>
-
+  
 <style>
 </style>

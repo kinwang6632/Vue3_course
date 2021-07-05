@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import DcHeros from '../pages/DcHeros.vue'
 import Calendar from '../pages/Calendar.vue'
 import Home from '../pages/Home.vue'
+import Markdown from '../pages/Markdown.vue'
+
 // import AppHeader from '../pages/AppHeader.vue'
 
 const routes = [
@@ -10,6 +12,12 @@ const routes = [
     name: 'DcHeros',
     component: DcHeros
   },
+  {
+    path: '/markdown',
+    name: 'Markdown',
+    component: Markdown
+  },
+
   {
     path: '/',
     name: "Home",
