@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="w-full text-justify">
     <nav
       class="
         w-full
