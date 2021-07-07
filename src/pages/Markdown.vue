@@ -17,13 +17,36 @@
 
 <script>
 import marked from "marked";
-import debounce from '../utilites/mixins/debounce'
+import debounce from "../utilites/mixins/debounce";
 export default {
-  mixins:[debounce],
+  // beforeCreate() {
+  //   console.log("befor Create");
+  // },
+  // created() {
+  //   console.log("Created");
+  // },
+  // beforeMount() {
+  //   console.log("befor mount");
+  // },
+  // mounted() {
+  //   console.log("befor mounted");
+  // },
+  // beforeUnmount() {
+  //   console.log("befor Unmount");
+  // },
+  // unmounted() {
+  //   console.log("unmounted");
+  // },
+  beforeUpdate() {
+    console.log("befor update");
+  },
+  updated() {
+    console.log("updated");
+  },
+  mixins: [debounce],
   data() {
     return {
       text: "",
-      
     };
   },
   computed: {
@@ -34,12 +57,10 @@ export default {
   methods: {
     update(e) {
       const task = () => {
-        this.text = e.target.value
-      }
-      this.debounce(task,500)
+        this.text = e.target.value;
+      };
+      this.debounce(task, 500);
     },
-    
-   
   },
 };
 </script>
