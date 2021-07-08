@@ -4,7 +4,7 @@ import Calendar from '../pages/Calendar.vue'
 import Home from '../pages/Home.vue'
 import Markdown from '../pages/Markdown.vue'
 import Slider from '../pages/Slider.vue'
-
+const Home1 = { template: '<div>Home</div>' }
 // import AppHeader from '../pages/AppHeader.vue'
 
 const routes = [
@@ -14,13 +14,17 @@ const routes = [
     component: DcHeros
   },
   {
+    path:'/',
+    component:Home1
+  },
+  {
     path: '/markdown',
     name: 'Markdown',
     component: Markdown
   },
 
   {
-    path: '/',
+    path: '/Home',
     name: "Home",
     component: Home
   },

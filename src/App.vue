@@ -1,13 +1,15 @@
 <template>
   <AppHeader />
-  <div class="w-full flex">
+  <div class="w-full flex">    
     <router-view></router-view>
   </div>
+  <loginModal />
 </template>
 <script>
 import AppHeader from "./components/AppHeader.vue";
+import loginModal from "./components/loginModal.vue"
 export default {
-  components: { AppHeader },
+  components: { AppHeader,loginModal },
 };
 </script>
 <style>

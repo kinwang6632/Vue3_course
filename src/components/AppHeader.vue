@@ -14,6 +14,7 @@
       <router-link v-for="item in list" :to="item.to" :key="item.to" class="mx-2">{{
         item.title
       }}</router-link>
+      <button class="mx-2">Login</button>
     </nav>
   </div>
 </template>
@@ -22,7 +23,9 @@
 export default {
   data() {
     return {
-      list: [
+      list: [    
+        { title: "Home",to:"/Home"},
+        //{ title: "Home1",to:"/Home1"},
         { title: "DC Heros", to: "/dc-heros" },
         { title: "Calendar", to: "/calendar" },
         { title: "Markdown", to: "/markdown" },
