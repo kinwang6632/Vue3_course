@@ -1,15 +1,20 @@
 <template>
-  <AppHeader />
+  <AppHeader @open-Login-Modal="isLoginOpen = true" />
   <div class="w-full flex">    
     <router-view></router-view>
   </div>
-  <loginModal />
+  <loginModal v-if="isLoginOpen" @close-login="isLoginOpen = false" />
 </template>
 <script>
 import AppHeader from "./components/AppHeader.vue";
 import loginModal from "./components/loginModal.vue"
 export default {
   components: { AppHeader,loginModal },
+  data() {
+        return{
+            isLoginOpen:false
+        }
+    }
 };
 </script>
 <style>

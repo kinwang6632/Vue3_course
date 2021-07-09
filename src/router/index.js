@@ -4,7 +4,7 @@ import Calendar from '../pages/Calendar.vue'
 import Home from '../pages/Home.vue'
 import Markdown from '../pages/Markdown.vue'
 import Slider from '../pages/Slider.vue'
-const Home1 = { template: '<div>Home</div>' }
+import Home1 from '../pages/Home1.vue'
 // import AppHeader from '../pages/AppHeader.vue'
 
 const routes = [
