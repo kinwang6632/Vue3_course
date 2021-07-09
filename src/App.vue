@@ -8,24 +8,24 @@
 <script>
 import AppHeader from "./components/AppHeader.vue";
 import loginModal from "./components/loginModal.vue";
-import firebase from './utilites/firebase'
+import firebase from "./utilites/firebase";
 export default {
   components: { AppHeader, loginModal },
   data() {
     return {
       isLoginOpen: false,
-      isLoggedIn:false,
+      isLoggedIn: false,
+      authUser:{},
     };
   },
   mounted() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        console.log(user)
-        // ...
+        this.isLoggedIn = true
+        this.authUser = user
       } else {
-        console.log("No User")
+        this.isLoggedIn = false
+        this.authUser = {}
       }
     });
   },
