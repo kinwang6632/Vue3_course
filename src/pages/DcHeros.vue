@@ -16,6 +16,7 @@
         v-model.trim="newHero"
         type="text"
         placeholder="Type Hero Name Here"
+        ref="newHeroRef"
       />
       <button
         class="
@@ -64,6 +65,9 @@ export default {
       this.heros = this.heros.filter((hero, i) => i != index);
     },
   },
+  mounted() {
+    this.$refs.newHeroRef.focus();
+  }
 };
 </script>
 

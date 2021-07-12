@@ -12,6 +12,7 @@
             <div class="my-4">
               <label>Email or UserName</label>
               <input
+                ref="emailRef"
                 v-model="email"
                 type="text"
                 class="rounded shadow p-2 w-full"
@@ -63,6 +64,11 @@ export default {
       isLoading: false,
     };
   },
+  mounted() {
+    //this.$refs.emailRef.focus();
+    const inputEmail  = this.$refs.emailRef 
+    inputEmail.focus()
+  },
   methods: {
     submit() {
       this.isLoading = true;
@@ -71,8 +77,8 @@ export default {
         .signInWithEmailAndPassword(this.email, this.password)
         .then((res) => {
           console.log(res);
-          this.email = '';
-          this.password = ''
+          this.email = "";
+          this.password = "";
           this.isLoading = false;
           this.close();
         })
@@ -82,9 +88,8 @@ export default {
         });
     },
     close() {
-      this.$emit('close-login')
-
-    }
+      this.$emit("close-login");
+    },
   },
 };
 </script>
