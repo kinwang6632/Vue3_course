@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 export default {
   setup() {
     const newHeroRef = ref("");
@@ -49,6 +49,12 @@ export default {
     onMounted(() => {
       newHeroRef.value.focus();
     });
+    const herosCount = computed({
+      get() {
+        return dcHeros.value.length;
+      },
+    }) 
+    
     function remove(index) {
       dcHeros.value = dcHeros.value.filter((hero, i) => i != index);
     }
@@ -58,17 +64,12 @@ export default {
       }
       newHero.value = "";
     }
-    return { dcHeros: dcHeros, newHero, remove, addHero,newHeroRef };
+
+    return { dcHeros: dcHeros, newHero, remove, addHero,newHeroRef,herosCount };
   },
 
-  computed: {
-    herosCount: {
-      get() {
-        return this.dcHeros.length;
-      },
-    },
-  },
-  methods: {},
+  
+  
 };
 </script>
 
