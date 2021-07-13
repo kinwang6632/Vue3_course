@@ -3,7 +3,9 @@
   <div class="w-full flex">
     <router-view></router-view>
   </div>
-  <loginModal v-if="isLoginOpen" @close-login="isLoginOpen = false" />
+  <teleport to="body">
+    <loginModal v-if="isLoginOpen" @close-login="isLoginOpen = false" />
+  </teleport>
 </template>
 <script>
 import AppHeader from "./components/AppHeader.vue";
@@ -15,17 +17,17 @@ export default {
     return {
       isLoginOpen: false,
       isLoggedIn: false,
-      authUser:{},
+      authUser: {},
     };
   },
   mounted() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.isLoggedIn = true
-        this.authUser = user
+        this.isLoggedIn = true;
+        this.authUser = user;
       } else {
-        this.isLoggedIn = false
-        this.authUser = {}
+        this.isLoggedIn = false;
+        this.authUser = {};
       }
     });
   },

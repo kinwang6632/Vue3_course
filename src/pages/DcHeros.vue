@@ -1,7 +1,7 @@
 <template>
   <div class="m-auto">
     <h1 class="text-2xl text-center">DC Heros {{ herosCount }}</h1>
-    <ul v-for="(hero, index) in heros" :key="hero.nme">
+    <ul v-for="(hero, index) in dcHeros" :key="hero.nme">
       <li class="flex justify-between">
         <div>
           {{ hero.name }}
@@ -36,38 +36,39 @@
 </template>
 
 <script>
+import { onMounted, ref } from "vue";
 export default {
-  data() {
-    return {
-      heros: [
-        { name: "Super Man" },
-        { name: "Super Women" },
-        { name: "Flash" },
-      ],
-      newHero: "",
-    };
+  setup() {
+    const newHeroRef = ref("");
+    const newHero = ref("");
+    const dcHeros = ref([
+      { name: "Super Man" },
+      { name: "Super Women" },
+      { name: "Flash" },
+    ]);
+    onMounted(() => {
+      newHeroRef.value.focus();
+    });
+    function remove(index) {
+      dcHeros.value = dcHeros.value.filter((hero, i) => i != index);
+    }
+    function addHero() {
+      if (newHero.value) {
+        dcHeros.value.unshift({ name: newHero.value });
+      }
+      newHero.value = "";
+    }
+    return { dcHeros: dcHeros, newHero, remove, addHero,newHeroRef };
   },
+
   computed: {
     herosCount: {
       get() {
-        return this.heros.length;
+        return this.dcHeros.length;
       },
     },
   },
-  methods: {
-    addHero() {
-      if (this.newHero) {
-        this.heros.unshift({ name: this.newHero });
-      }
-      this.newHero = "";
-    },
-    remove(index) {
-      this.heros = this.heros.filter((hero, i) => i != index);
-    },
-  },
-  mounted() {
-    this.$refs.newHeroRef.focus();
-  }
+  methods: {},
 };
 </script>
 

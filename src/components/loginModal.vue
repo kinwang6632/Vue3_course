@@ -8,11 +8,8 @@
       <div class="z-30 m-auto bg-white p-2 rounded shadow w-1/3">
         <div class="p-2 border">
           <h1 class="text-2xl">Login</h1>
-          <section class="my-5">
-            <button class="border px-2 rounded" @click="loginWithGoogle">
-              Login with Google
-            </button>
-          </section>
+          <GoogleLogin class="flex m-auto" @close-login-from-google="close()" />
+          
           <p class="my-3">Or</p>
           <form class="p-2 my-2" @submit.prevent="submit()">
             <div class="my-4">
@@ -62,7 +59,9 @@
 
 <script>
 import firebase from "../utilites/firebase";
+import GoogleLogin from '../components/Login/GoogleLogin.vue';
 export default {
+  components:{GoogleLogin},
   data() {
     return {
       email: "khalid181632@hotmail.com",
@@ -96,18 +95,7 @@ export default {
     close() {
       this.$emit("close-login");
     },
-    loginWithGoogle() {
-      var provider = new firebase.auth.GoogleAuthProvider();
-      firebase
-        .auth()
-        .signInWithPopup(provider)    
-        .then(() =>{
-          this.close();
-        })
-        .catch(() => {
-          //console.log(error);
-        });
-    },
+    
   },
 };
 </script>
