@@ -5,6 +5,7 @@ import Home from '../pages/Home.vue'
 import Markdown from '../pages/Markdown.vue'
 import Slider from '../pages/Slider.vue'
 import Home1 from '../pages/Home1.vue'
+import Calculator from '../pages/Calculator.vue'
 // import AppHeader from '../pages/AppHeader.vue'
 
 const routes = [
@@ -37,6 +38,11 @@ const routes = [
     path: '/slider',
     name: 'slider',
     component: Slider
+  },
+  {
+    path: '/calculator',
+    name: 'calculator',
+    component: Calculator
   },
 ]
 
