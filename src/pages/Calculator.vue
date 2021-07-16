@@ -110,13 +110,13 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 export default {
   setup() {
     //const calculation = ref("");
     const operations = ["+", "-", "*", "/"];
     const currentNum = ref("");
-    const numbers = ['1','2','3','4','5','6','7','8','9','0']
+    const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
     const prevNum = ref("");
     const selectedOperation = ref("");
     function pressed(value) {
@@ -126,7 +126,7 @@ export default {
         clear();
       } else if (operations.includes(value)) {
         applyOperaton(value);
-      } else if(numbers.includes(value)) {
+      } else if (numbers.includes(value)) {
         appendNumber(value);
       }
     }
@@ -136,6 +136,7 @@ export default {
       selectedOperation.value = "";
     }
     function applyOperaton(value) {
+      calculate();
       prevNum.value = currentNum.value;
       currentNum.value = "";
       selectedOperation.value = value;
@@ -163,12 +164,15 @@ export default {
     function appendNumber(value) {
       currentNum.value = currentNum.value + value;
     }
-    onMounted(()=>{
-      window.addEventListener('keydown',(e)=>{
-        pressed(e.key)
-      })
       
-    })
+    const handleKeydown =(e) => pressed(e.key);
+    
+    onMounted(() => {
+      window.addEventListener("keydown", handleKeydown);
+    });
+    onUnmounted(() => {
+      window.removeEventListener("keydown",handleKeydown);
+    });
     return { currentNum, pressed, selectedOperation, prevNum };
   },
 };

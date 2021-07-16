@@ -6,6 +6,7 @@ import Markdown from '../pages/Markdown.vue'
 import Slider from '../pages/Slider.vue'
 import Home1 from '../pages/Home1.vue'
 import Calculator from '../pages/Calculator.vue'
+import ReuseableModal from '../pages/ReuseableModal'
 // import AppHeader from '../pages/AppHeader.vue'
 
 const routes = [
@@ -35,7 +36,7 @@ const routes = [
     component: Calendar
   },
   {
-    path: '/slider',
+    path: '/slider-carousel',
     name: 'slider',
     component: Slider
   },
@@ -43,6 +44,11 @@ const routes = [
     path: '/calculator',
     name: 'calculator',
     component: Calculator
+  },
+  {
+    path: '/reuseable-modal',
+    name:'ReuseableModal',
+    component: ReuseableModal,
   },
 ]
 
