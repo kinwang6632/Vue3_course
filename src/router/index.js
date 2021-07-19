@@ -7,6 +7,7 @@ import Slider from '../pages/Slider.vue'
 import Home1 from '../pages/Home1.vue'
 import Calculator from '../pages/Calculator.vue'
 import ReuseableModal from '../pages/ReuseableModal'
+import Chat from '../pages/Chat.vue'
 // import AppHeader from '../pages/AppHeader.vue'
 
 const routes = [
@@ -49,6 +50,11 @@ const routes = [
     path: '/reuseable-modal',
     name:'ReuseableModal',
     component: ReuseableModal,
+  },
+  {
+    path:'/chat',
+    name:'chat',
+    component:Chat,
   },
 ]
 

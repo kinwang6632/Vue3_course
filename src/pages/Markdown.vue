@@ -18,8 +18,9 @@
 
 <script>
 import marked from "marked";
-import debounce from "../utilites/mixins/debounce";
+import useDebounce from '../utilites/Composition/useDebounce'
 export default {
+  
   // beforeCreate() {
   //   console.log("befor Create");
   // },
@@ -44,10 +45,11 @@ export default {
   updated() {
     console.log("updated");
   },
-  mixins: [debounce],
+  
   data() {
     return {
       text: "",
+      debounce :"",
     };
   },
   computed: {
@@ -64,6 +66,8 @@ export default {
     },
   },
   mounted() {
+    const {debounce} = useDebounce()
+    this.debounce = debounce
     this.$refs.markdownTextArea.focus();
   }
 };

@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/database";
 const firebaseConfig = {
     apiKey: "AIzaSyARb6jZLtPCFXm4dK_j5N9k1P-AhcINAJ8",
     authDomain: "vue-full-course-276c1.firebaseapp.com",
