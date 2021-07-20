@@ -10,5 +10,6 @@ const firebaseConfig = {
     appId: "1:608439415074:web:61585e78a486f4e4eb357b"
   };
 firebase.initializeApp(firebaseConfig);
-
+const db = firebase.database();
+export const chatsRef = db.ref("chats");
 export default firebase;
