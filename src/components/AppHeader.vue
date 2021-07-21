@@ -30,7 +30,7 @@
 <script>
 import firebase from "../utilites/firebase";
 export default {
-  props:{isLoggedIn:{type:Boolean,required:true}},
+  //props:{isLoggedIn:{type:Boolean,required:true}},
   data() {
     return {
       list: [
@@ -52,12 +52,17 @@ export default {
       firebase
         .auth()
         .signOut()
-        .then((res) => {
-          console.log(res + ' success Logout')
+        .then(() => {
+          //console.log(res + ' success Logout')
         })
         .catch((error) => {
           console.log(error)
         });
+    },
+  },
+  computed:{
+    isLoggedIn() {
+      return this.$store.state.isLoggedIn
     },
   },
 };

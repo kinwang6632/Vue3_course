@@ -8,7 +8,7 @@
             v-for="chat in state.chats"
             :key="chat.message"
             class="w-full"
-            :class="chat.UserId === state.userId ? 'text-right' : 'text-left'"
+            :class="chat.UserId === userId ? 'text-right' : 'text-left'"
           >
             {{ chat.message }}
           </div>
@@ -28,22 +28,22 @@
 </template>
 
 <script>
-import { onMounted, reactive } from "vue";
-import firebase, { chatsRef } from "../utilites/firebase";
+import { computed, onMounted, reactive } from "vue";
+import  { chatsRef } from "../utilites/firebase";
+import { useStore } from "vuex";
 export default {
   setup() {
     const state = reactive({
       chats: [],
       message: "",
-      userId: null,
-      cha :[]
     });
+
+    const store = useStore();
+    const userId = computed(() => store.state.authUser.uid);
     onMounted(async () => {
       //const db = firebase.database();
       chatsRef.on("child_added", (snapshot) => {
-        state.userId = firebase.auth().currentUser.uid;
-        
-        state.chats.push({key:snapshot.key, ...snapshot.val()})
+        state.chats.push({ key: snapshot.key, ...snapshot.val() });
         //state.chats.push({...snapshot.val()})
         //console.log(snapshot.val());
         //state.chats = snapshot.val();
@@ -54,7 +54,7 @@ export default {
       newChat.set({ UserId: state.userId, message: state.message });
       state.message = "";
     }
-    return { state, addMessage };
+    return { state, addMessage, userId, store };
   },
 };
 </script>
