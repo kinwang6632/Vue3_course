@@ -6,6 +6,7 @@ const store = createStore({
     return {
       isLoggedIn: false,
       authUser:{},
+      isLoginOpen: false,
     }
   },
   mutations:{
@@ -14,6 +15,9 @@ const store = createStore({
     },
     setAuthUser(state,payload) {
       state.authUser = payload
+    },
+    setLoginModal(state,payload) {
+      state.isLoginOpen = payload
     }
   }
 //   mutations: {

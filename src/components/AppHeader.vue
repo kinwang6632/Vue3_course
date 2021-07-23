@@ -19,7 +19,7 @@
         >{{ item.title }}</router-link
       >
       <button v-if="isLoggedIn" class="mx-2" @click="logout">Logout</button>
-      <button v-else class="mx-2" @click="$emit('open-Login-Modal')">
+      <button v-else class="mx-2" @click="openLogin">
           Login
 
       </button>
@@ -43,6 +43,8 @@ export default {
         { title: "Calculator", to: "/calculator" },
         { title: "Modal", to: "/reuseable-modal" },
         { title: "Chat", to: "/Chat" },
+        { title: "User Crud", to: "/user-crud" },
+
 
       ],
     };
@@ -59,6 +61,10 @@ export default {
           console.log(error)
         });
     },
+    openLogin() {
+      this.$store.commit('setLoginModal',true)
+      
+    }
   },
   computed:{
     isLoggedIn() {

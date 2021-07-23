@@ -8,6 +8,8 @@ import Home1 from '../pages/Home1.vue'
 import Calculator from '../pages/Calculator.vue'
 import ReuseableModal from '../pages/ReuseableModal'
 import Chat from '../pages/Chat.vue'
+import store from '../store/index'
+import UserCrud from '../pages/UserCrud'
 // import AppHeader from '../pages/AppHeader.vue'
 
 const routes = [
@@ -17,8 +19,8 @@ const routes = [
     component: DcHeros
   },
   {
-    path:'/',
-    component:Home1
+    path: '/',
+    component: Home1
   },
   {
     path: '/markdown',
@@ -44,17 +46,27 @@ const routes = [
   {
     path: '/calculator',
     name: 'calculator',
-    component: Calculator
+    component: Calculator,
+    meta: { middleware: "auth" },
+
   },
   {
     path: '/reuseable-modal',
-    name:'ReuseableModal',
+    name: 'ReuseableModal',
     component: ReuseableModal,
   },
   {
-    path:'/chat',
-    name:'chat',
-    component:Chat,
+    path: '/chat',
+    name: 'chat',
+    component: Chat,
+    meta: { middleware: "auth" },
+
+  },
+  {
+    path: '/user-crud',
+    name: 'user-crud',
+    component: UserCrud,
+
   },
 ]
 
@@ -62,5 +74,15 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
-
+router.beforeEach((to,_, next) => {
+  
+  if (!to.meta.middleware) {next()}
+  const middleware = require(`../middleware/${to.meta.middleware}`)
+  
+  if (middleware) {
+    middleware.default(next, store)
+  } else {
+    next()
+  }
+})
 export default router

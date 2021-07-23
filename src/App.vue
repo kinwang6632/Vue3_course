@@ -1,10 +1,10 @@
 <template>
-  <AppHeader :isLoggedIn="isLoggedIn" @open-Login-Modal="isLoginOpen = true" />
+  <AppHeader  />
   <div class="w-full flex">
     <router-view></router-view>
   </div>
   <teleport to="body">
-    <loginModal v-if="isLoginOpen" @close-login="isLoginOpen = false" />
+    <loginModal  />
   </teleport>
 </template>
 <script>
@@ -15,7 +15,7 @@ export default {
   components: { AppHeader, loginModal },
   data() {
     return {
-      isLoginOpen: false,
+      
       
     };
   },
